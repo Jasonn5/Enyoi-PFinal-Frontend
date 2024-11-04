@@ -1,0 +1,81 @@
+/* src/styles/Header.css */
+.header {
+    background-color: #0079bf;
+    color: white;
+    padding: 10px 30px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .header h1 {
+    font-size: 2rem; /* Tamaño más moderado */
+    margin: 0;
+  }
+  
+  nav {
+    display: flex;
+    gap: 25px; /* Espaciado entre los enlaces */
+    align-items: center;
+  }
+  
+  nav ul {
+    list-style: none;
+    display: flex;
+    gap: 20px; /* Espaciado entre elementos de la lista */
+    margin: 0;
+    padding: 0;
+  }
+  
+  nav ul li {
+    display: inline;
+  }
+  
+  nav a {
+    color: white;
+    text-decoration: none;
+    font-size: 1.1rem; /* Tamaño de fuente moderado */
+    font-weight: bold;
+  }
+  
+  .auth-button {
+    background-color: #0052cc;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px; /* Tamaño de botón más adecuado */
+    font-size: 1rem; /* Tamaño de texto del botón */
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .auth-button:hover {
+    background-color: #0041a3;
+  }
+  
+  /* Media Queries para responsividad */
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column; /* Apilar elementos verticalmente */
+      align-items: flex-start;
+    }
+  
+    nav {
+      flex-direction: column; /* Colocar enlaces en una columna */
+      gap: 10px;
+    }
+  
+    .auth-button {
+      margin-top: 15px; /* Espaciado superior para el botón */
+      align-self: flex-start; /* Alinear el botón al inicio */
+    }
+  
+    .header h1 {
+      font-size: 1.5rem; /* Reducir tamaño de fuente */
+    }
+  
+    nav a {
+      font-size: 1rem; /* Reducir tamaño de fuente de los enlaces */
+    }
+  }
+  

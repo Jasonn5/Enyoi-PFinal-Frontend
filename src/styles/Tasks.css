@@ -1,0 +1,65 @@
+.tasks-container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; 
+  margin: 0 2vw;
+}
+
+.kanban-board {
+  display: flex;
+  flex: 1;
+  gap: 20px;
+}
+
+.column {
+  flex: 1;
+  background-color: #f3f3f3;
+  border-radius: 5px;
+  padding: 10px;
+  overflow-y: auto;
+  max-height: 80vh;
+}
+
+.column h3 {
+  text-align: center;
+  margin-bottom: 10px;
+}
+
+.column-content {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  max-height: 500px;
+  overflow-y: auto;
+}
+
+.task {
+  padding: 10px;
+  border-radius: 5px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.button-container {
+  display: flex;
+  justify-content: flex-end; /* Cambia esto a 'center' si quieres que esté centrado */
+  margin: 10px 0; /* Espacio debajo del botón */
+}
+
+.add-task-button {
+  background-color: #1976d2; /* Azul primario */
+  color: white;
+  border: none;
+  padding: 8px 16px; /* Tamaño del botón */
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.add-task-button:hover {
+  background-color: #115293; /* Azul más oscuro */
+}
+
+.add-task-button:active {
+  background-color: #0d3c6b; /* Azul más oscuro al hacer clic */
+}
