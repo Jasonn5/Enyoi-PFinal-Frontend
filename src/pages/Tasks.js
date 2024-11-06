@@ -1,4 +1,3 @@
-// src/pages/Tasks.js
 import React, { useState, useEffect } from 'react';
 import { DndProvider, useDrag, useDrop } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
@@ -118,7 +117,7 @@ const Tasks = () => {
         task.id_tarea === updatedTask.id_tarea ? updatedTask : task
       )
     );
-    setSelectedTask(null); // Cierra el modal
+    setSelectedTask(null); 
   };
 
   return (

@@ -1,7 +1,6 @@
-// src/pages/Login.js
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import axios from 'axios'; // Si decides usar axios
+import axios from 'axios'; 
 import '../styles/Login.css';
 
 const Login = () => {
@@ -22,6 +21,7 @@ const Login = () => {
       localStorage.setItem('token', response.data.token);
 
       navigate('/tasks');
+      window.location.reload(); 
     } catch (error) {
       setError('Error al iniciar sesión. Verifica tus credenciales.');
     }

@@ -7,6 +7,7 @@ import Register from './pages/Register';
 import ForgotPassword from './pages/ForgotPassword'; 
 import ProtectedRoute from './components/ProtectedRoute';
 import Tasks from './pages/Tasks'; 
+import ChangePassword from './pages/ChangePassword'; 
 
 function App() {
   return (
@@ -17,6 +18,14 @@ function App() {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/forgot-password" element={<ForgotPassword />} />
+        <Route
+          path="/change-password"
+          element={
+            <ProtectedRoute>
+              <ChangePassword />
+            </ProtectedRoute>
+          }
+        />
         <Route path="/tasks" element={
           <ProtectedRoute>
             <Tasks />

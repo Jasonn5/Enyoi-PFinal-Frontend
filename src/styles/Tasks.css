@@ -17,7 +17,7 @@
   border-radius: 5px;
   padding: 10px;
   overflow-y: auto;
-  max-height: 80vh;
+  max-height: 90vh;
 }
 
 .column h3 {
@@ -29,7 +29,7 @@
   display: flex;
   flex-direction: column;
   gap: 10px;
-  max-height: 500px;
+  max-height: 85vh;
   overflow-y: auto;
 }
 
@@ -41,15 +41,15 @@
 
 .button-container {
   display: flex;
-  justify-content: flex-end; /* Cambia esto a 'center' si quieres que esté centrado */
-  margin: 10px 0; /* Espacio debajo del botón */
+  justify-content: flex-end; 
+  margin: 10px 0; 
 }
 
 .add-task-button {
-  background-color: #1976d2; /* Azul primario */
+  background-color: #1976d2; 
   color: white;
   border: none;
-  padding: 8px 16px; /* Tamaño del botón */
+  padding: 8px 16px; 
   border-radius: 5px;
   font-size: 16px;
   cursor: pointer;
@@ -57,9 +57,13 @@
 }
 
 .add-task-button:hover {
-  background-color: #115293; /* Azul más oscuro */
+  background-color: #115293;
 }
 
 .add-task-button:active {
-  background-color: #0d3c6b; /* Azul más oscuro al hacer clic */
+  background-color: #0d3c6b; 
+}
+
+body{
+  overflow: hidden;
 }

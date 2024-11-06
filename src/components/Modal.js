@@ -48,8 +48,9 @@ const Modal = ({ onClose, onAddTask }) => {
             }
 
             alert('Tarea creada y categorías asignadas con éxito');
-            onAddTask(); // Refrescar la lista de tareas si es necesario
-            onClose(); // Cerrar el modal
+            onAddTask(); 
+            onClose(); 
+            window.location.reload()
         } catch (error) {
             alert('Hubo un error al crear la tarea o asignar las categorías');
         }
