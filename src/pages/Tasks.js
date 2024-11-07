@@ -64,23 +64,43 @@ const Column = ({ status, tasks, moveTask, onTaskDoubleClick }) => {
 
 const Tasks = () => {
   const [tasks, setTasks] = useState([]);
+  const [filteredTasks, setFilteredTasks] = useState([]);
   const [showModal, setShowModal] = useState(false);
   const [selectedTask, setSelectedTask] = useState(null);
+
+  // Filter state
+  const [titleFilter, setTitleFilter] = useState('');
+  const [dueDateFilter, setDueDateFilter] = useState('');
+  const [categoryFilter, setCategoryFilter] = useState('');
 
   useEffect(() => {
     const fetchTasks = async () => {
       try {
         const response = await getTasks();
-        console.log('Tareas recuperadas:', response);
         setTasks(response || []);
+        setFilteredTasks(response || []);
       } catch (error) {
         console.error('Error al cargar las tareas:', error);
         setTasks([]);
       }
     };
-
     fetchTasks();
   }, []);
+
+  useEffect(() => {
+    // Apply filters whenever tasks or filter values change
+    filterTasks();
+  }, [tasks, titleFilter, dueDateFilter, categoryFilter]);
+
+  const filterTasks = () => {
+    const filtered = tasks.filter(task => {
+      const matchesTitle = task.titulo.toLowerCase().includes(titleFilter.toLowerCase());
+      const matchesDueDate = dueDateFilter ? new Date(task.fecha_vencimiento).toLocaleDateString() === dueDateFilter : true;
+      const matchesCategory = categoryFilter ? task.Categories.some(cat => cat.nombre_categoria.toLowerCase().includes(categoryFilter.toLowerCase())) : true;
+      return matchesTitle && matchesDueDate && matchesCategory;
+    });
+    setFilteredTasks(filtered);
+  };
 
   const moveTask = async (taskId, newStatus) => {
     try {
@@ -99,7 +119,6 @@ const Tasks = () => {
     try {
       const response = await createTask(newTask);
       const createdTask = response.data;
-      console.log('Nueva tarea creada:', createdTask);
       setTasks((prevTasks) => [...prevTasks, createdTask]);
       setShowModal(false);
     } catch (error) {
@@ -128,12 +147,35 @@ const Tasks = () => {
             Agregar tarea
           </button>
         </div>
+
+        {/* Filters Row */}
+        <div className="filter-row">
+          <input
+            type="text"
+            placeholder="Filtrar por título"
+            value={titleFilter}
+            onChange={(e) => setTitleFilter(e.target.value)}
+          />
+          <input
+            type="date"
+            placeholder="Filtrar por fecha de vencimiento"
+            value={dueDateFilter}
+            onChange={(e) => setDueDateFilter(e.target.value)}
+          />
+          <input
+            type="text"
+            placeholder="Filtrar por categoría"
+            value={categoryFilter}
+            onChange={(e) => setCategoryFilter(e.target.value)}
+          />
+        </div>
+
         <div className="kanban-board">
           {TASK_STATUSES.map((status) => (
             <Column
               key={status}
               status={status}
-              tasks={tasks.filter((task) => task.estado.toLowerCase() === status.toLowerCase())}
+              tasks={filteredTasks.filter((task) => task.estado.toLowerCase() === status.toLowerCase())}
               moveTask={moveTask}
               onTaskDoubleClick={handleTaskDoubleClick}
             />
